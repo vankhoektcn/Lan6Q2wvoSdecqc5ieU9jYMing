@@ -52,7 +52,7 @@ class ProjectsTableSeeder extends Seeder
 			]));
 
 			$entry->attachments()->save( new Attachment ([
-				'path' => 'project.png',
+				'path' => 'project.jpg',
 				'priority' => 0,
 				'published' => 1
 			]));
