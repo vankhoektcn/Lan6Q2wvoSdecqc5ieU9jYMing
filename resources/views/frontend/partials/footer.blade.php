@@ -19,7 +19,7 @@
 					<h4 class="second-color">Tin cập nhật<span class="special-color">.</span></h4>
 					<div class="footer-title-separator"></div>
 					<div class="row">
-					@if($newArticleType)
+					@if(isset($newArticleType))
 						@foreach($newArticleType->articles()->take(3)->get() as $key=>$article)
 						<div class="col-xs-6 col-sm-12">
 							<article>

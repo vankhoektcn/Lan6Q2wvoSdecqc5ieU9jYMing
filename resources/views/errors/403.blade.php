@@ -10,7 +10,7 @@
 @endsection
 
 @section('body')
-<section>
+<section style="background: #fff;">
 	<div class="container">
 		<div class="col-md-12">
 			<br>
