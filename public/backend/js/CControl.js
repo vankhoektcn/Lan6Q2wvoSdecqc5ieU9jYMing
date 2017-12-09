@@ -213,7 +213,11 @@ var CControl = function () {
 
 		$(_dom).find('textarea.editor').each(function (index, item) {
 			CKEDITOR.replace($(item).attr('id'), {
-				filebrowserBrowseUrl : '/elfinder/ckeditor'
+				// filebrowserBrowseUrl : '/elfinder/ckeditor'
+				// filebrowserBrowseUrl : '/backend/plugins/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
+				// filebrowserUploadUrl : '/backend/plugins/ckfinder/ckfinder.html?Type=Images'
+				filebrowserBrowseUrl: '/backend/plugins/ckfinder/ckfinder.html',
+				filebrowserUploadUrl: '/backend/plugins/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files'
 			});
 		});
 
