@@ -64,6 +64,10 @@ class ArticleController extends Controller
 			$article->key = Common::createKeyURL($request->input('Article.ArticleTranslation.'.$languageDefault->code.'.name'));
 			$article->priority = $request->input('Article.priority', 0);
 			$article->published = $user->hasRoles('Administrator') ? 1: 0;// $request->input('Article.published', 0);
+			if($article->published){
+				$article->published_by = $user->id;
+				$article->published_at = Carbon::now();	
+			}
 			$article->created_by = $user->id;
 			$article->save();
 
@@ -182,6 +186,10 @@ class ArticleController extends Controller
 			}
 			$article->priority = $request->input('Article.priority', 0);
 			$article->published = $user->hasRoles('Administrator') ? 1: 0;// $request->input('Article.published', 0);
+			if($article->published){
+				$article->published_by = $user->id;
+				$article->published_at = Carbon::now();	
+			}
 			$article->updated_by = $user->id;
 			$article->save();
 
