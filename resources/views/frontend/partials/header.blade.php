@@ -110,7 +110,7 @@
 									@if($pACategory->hasChildrens())
 									<ul class="dropdown-menu">
 										@foreach($pACategory->childrens as $aCategory)
-										<li><a href="{{$aCategory->name}}">{{$aCategory->name}}</a></li>
+										<li><a href="{{$aCategory->getLink()}}">{{$aCategory->name}}</a></li>
 										@endforeach
 									</ul>
 									@endif

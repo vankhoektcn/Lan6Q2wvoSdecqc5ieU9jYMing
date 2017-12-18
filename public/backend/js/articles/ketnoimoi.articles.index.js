@@ -431,7 +431,8 @@ ketnoimoi.articles.index = {
 					if (type === 'display') {
 						var link = '#';
 						if (data.article_categories && data.article_categories.length) {
-							link = $.format('/{0}/{1}.html', data.article_categories[0].key, data.key);
+							// link = $.format('/{0}/{1}.html', data.article_categories[0].key, data.key);
+							link = $.format('/{0}.html', data.key);
 						};
 						
 						if(!parseInt(row.not_delete)){

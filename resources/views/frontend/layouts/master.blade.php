@@ -8,9 +8,11 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
-	<title>{{ $config->getValueByKey('site_name') }} - {{ $config->getValueByKey('site_title') }}</title>
-	<meta name="keywords" content="Download, Apartment, Premium, Real Estate, HMTL, Site Template, property, mortgage, CSS" />
-	<meta name="description" content="Download Apartment - Premium Real Estate HMTL Site Template" />
+	{!! SEOMeta::generate() !!}
+	{!! OpenGraph::generate() !!}
+	<meta name="csrf-token" content="{{ csrf_token() }}">
+	<script type="application/ld+json">{!! $config->getJSONLD() !!}</script>
+		
 	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 	<link rel="icon" href="favicon.ico" type="image/x-icon">
 

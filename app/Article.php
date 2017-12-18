@@ -67,7 +67,7 @@ class Article extends BaseModel
 	{
 		$firstCategory = $this->articleCategories()->first();
 		if ($firstCategory) {
-			return route('article', ['key' => $this->key]);
+			return route('article', ['categorykey' => $firstCategory->key, 'key' => $this->key]);
 		}
 		return '';
 	}

@@ -7,83 +7,36 @@
 @endsection
 
 @section('body')
-			<div class="page">
-				<div class="page_header clearfix page_margin_top">
-					<div class="page_header_left">
-						<h1 class="page_title">{{ $category->name }}</h1>
-					</div>
-					<div class="page_header_right">
-						<ul class="bread_crumb">
-							<li>
-								<a title="Home" href="home.html">
-									Trang chủ
-								</a>
-							</li>
-							<li class="separator icon_small_arrow right_gray">
-								&nbsp;
-							</li>
-							<li>
-								{{ $category->name }}
-							</li>
-						</ul>
-					</div>
+	@include('frontend.partials.breadcrumb')
+	
+	<section class="section-light padt3x">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12 col-md-9">
+							<div class="masonry-grid masonry-grid-short">
+									<!-- width of .grid-sizer used for columnWidth -->
+									<div class="masonry-grid-sizer"></div>
+									@foreach($mainArticles as $key => $article)
+									@include('frontend.partials.gridArticles')
+									@endforeach
+								</div>
+								{!! $mainArticles->render() !!}
+						<!-- <div class="offer-pagination margin-top-15">
+							<a href="#" class="prev"><i class="jfont">&#xe800;</i></a>
+							<a class="active">1</a><a href="#">2</a>
+							<a href="#">3</a><a href="#">4</a>
+							<a href="#" class="next"><i class="jfont">&#xe802;</i></a>
+							<div class="clearfix"></div>
+						</div> -->
 				</div>
-				<div class="page_layout clearfix">
-					<div class="divider_block clearfix">
-						<hr class="divider first">
-						<hr class="divider subheader_arrow">
-						<hr class="divider last">
-					</div>
-					<div class="row">
-						<div class="column column_2_3">
-							<div class="row">
-								@include('frontend.partials1.blogBigArticles')
-							</div>
+				<div class="col-xs-12 col-md-3">
+					<div class="sidebar">
+						@include('frontend.partials.sidebarCategories')
 
-							{!! $blogBigArticles->render() !!}
-							
-							<!-- <ul class="pagination clearfix page_margin_top_section">
-								<li class="left">
-									<a href="#" title="">&nbsp;</a>
-								</li>
-								<li class="selected">
-									<a href="#" title="">
-										1
-									</a>
-								</li>
-								<li>
-									<a href="#" title="">
-										2
-									</a>
-								</li>
-								<li>
-									<a href="#" title="">
-										3
-									</a>
-								</li>
-								<li class="right">
-									<a href="#" title="">&nbsp;</a>
-								</li>
-							</ul> -->
-						</div>
-						<div class="column column_1_3 page_margin_top">
-							@if($parentCategory)
-								<h4 class="box_header">{{$parentCategory->name}}</h4>
-								@foreach($parentCategory->childrens()->where('published', 1)->get() as $key => $category)
-								@include('frontend.partials1.parentCategoryBox')				
-								@endforeach
-							@endif
-
-							<h4 class="box_header page_margin_top_section">Mới nhất</h4>
-							@include('frontend.partials1.newPosts13')
-							@if(isset($myPublic))
-								<h4 class="box_header page_margin_top_section"><a href="{{$myPublic->getLink()}}" title="{{$myPublic->name}}">{{$myPublic->name}}</a></h4>
-								@foreach($myPublic->childrens()->where('published', 1)->get() as $key => $category)
-								@include('frontend.partials1.parentCategoryBox')				
-								@endforeach
-							@endif
-						</div>
+						@include('frontend.partials.sidebarLastestNews')
 					</div>
 				</div>
 			</div>
+		</div>
+	</section>
 @endsection
