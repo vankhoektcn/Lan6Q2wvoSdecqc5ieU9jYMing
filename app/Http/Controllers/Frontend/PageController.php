@@ -62,8 +62,12 @@ class PageController extends Controller
         view()->share('logoBannerCategory', $logoBannerCategory);
         */
         $newArticleType = ArticleType::findByKey('moi-nhat')->first();
+        $parentArticleCategories = ArticleCategory::where('published', 1)->where('parent_id', 0)->orderBy('priority')->get();
+        $lastestNews = Article::where('published', 1)->orderBy('published_at', 'desc')->take(5)->get();
         view()->share('newArticleType', $newArticleType);
-        // dd($newArticleType->articles()->take(3)->get());
+        view()->share('parentArticleCategories', $parentArticleCategories);
+        view()->share('lastestNews', $lastestNews);
+        //dd($parentArticleCategories);
     }
 	public function master( $view, $viewCompact){
 		return view($view, compact('parentArticleCategories'))->with($viewCompact);
@@ -431,13 +435,14 @@ class PageController extends Controller
 		return view('frontend.pages.tag', compact('articles', 'type'));
 	}
 
-	public function article($key)
+	public function article($categorykey, $key)
 	{
 		$article = Article::findByKey($key)->first();
 		if ($article == null) {
 			abort(404);
 		}
-		$category = $article->firstArticleCategories();
+		// $category = $article->firstArticleCategories();
+		$category = ArticleCategory::findByKey($categorykey)->first();
 		if ($category == null) {
 			abort(404);
 		}
@@ -451,7 +456,9 @@ class PageController extends Controller
 		$newPosts13 = Article::where('published', 1)->orderBy('published_at', 'desc')->take(5)->get();		
 		$postsCarousel = $article->relatedArticles()->where('published', 1)->orderBy('created_by', 'desc')->get();
 		//return view('frontend.pages.article', compact('article', 'category', 'hotnews', 'latestPosts'));
-		return $this->master('frontend.pages.article', compact('article', 'category', 'hotnews', 'latestPosts', 'parentCategory', 'newPosts13', 'postsCarousel'));
+		$breadcrumb = '<li><a href="'.$category->getLink().'">'.$category->name.'</a></li>
+				    <li class="active">'.$article->name.'</li>';
+		return $this->master('frontend.pages.article', compact('article', 'category', 'hotnews', 'latestPosts', 'parentCategory', 'newPosts13', 'postsCarousel', 'breadcrumb'));
 	}
 
 	public function projects($key)
@@ -543,8 +550,8 @@ class PageController extends Controller
 		OpenGraph::addProperty('image:width', 1200);
 		OpenGraph::addProperty('image:height', 628);
 		// end metadata
-
-		return $this->master('frontend.pages.project', compact('project', 'projectType'));
+		$breadcrumb = '<li><a href="'.$project->getLink().'">'.$project->name.'</a></li>';
+		return $this->master('frontend.pages.project', compact('project', 'projectType', 'breadcrumb'));
 	}
 
 	public function gallery()
@@ -1162,19 +1169,12 @@ class PageController extends Controller
 		OpenGraph::addProperty('image:width', 1200);
 		OpenGraph::addProperty('image:height', 628);
 
-		$childrensCategory = $category->childrens()->where('published', 1)->get();
-		$postsCarousel = $category->articles()->where('published', 1)->orderBy('published_at', 'desc')->take(5)->get();
-		if(count($postsCarousel) == 0){
-			foreach ($childrensCategory as $key => $childCategory) {
-				$articleChild = $childCategory->articles()->where('published', 1)->orderBy('id','desc')->take(1)->get();
-				if(count($articleChild) > 0){
-					$postsCarousel->push($articleChild[0]);
-				}
-			}
-		}
-		$newPosts13 = Article::where('published', 1)->orderBy('published_at', 'desc')->take(5)->get();
-		
-		return $this->master('frontend.pages.parentcategory', compact('category', 'postsCarousel', 'childrensCategory', 'newPosts13'));
+		$childrensCategory = $category->childrens()->where('published', 1)->get();		
+		// $newPosts13 = Article::where('published', 1)->orderBy('published_at', 'desc')->take(5)->get();
+
+		$mainArticles = $category->articles()->where('published', 1)->orderBy('id','desc')->paginate($limit);
+		$breadcrumb = '<li class="active">'.$category->name.'</li>';
+		return $this->master('frontend.pages.parentcategory', compact('mainArticles', 'category', 'breadcrumb'));
 	}
 	public function category($parentcategorykey, $key)
 	{
@@ -1214,12 +1214,13 @@ class PageController extends Controller
 		OpenGraph::addProperty('image:width', 1200);
 		OpenGraph::addProperty('image:height', 628);
 
-		$blogBigArticles = $category->articles()->where('published', 1)->orderBy('id','desc')->paginate($limit);
+		$mainArticles = $category->articles()->where('published', 1)->orderBy('id','desc')->paginate($limit);
 		$parentCategory = $category->parent()->first();
-		$newPosts13 = Article::where('published', 1)->orderBy('published_at', 'desc')->take(5)->get();
 		/*if($category->menu_display){
 			return view('frontend.pages.services', compact('articles', 'category'));
 		}*/
-		return $this->master('frontend.pages.category', compact('blogBigArticles', 'category', 'parentCategory', 'newPosts13'));
+		$breadcrumb = '<li><a href="'.$parentCategory->getLink().'">'.$parentCategory->name.'</a></li>
+				    <li class="active">'.$category->name.'</li>';
+		return $this->master('frontend.pages.category', compact('mainArticles', 'category', 'breadcrumb'));
 	}
 }

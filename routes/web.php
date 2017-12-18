@@ -168,9 +168,9 @@ Route::group(['namespace' => 'Frontend'], function()
 
 	// articles category
 	//Route::get('{key}', 'PageController@articles')->name('articles');
-	Route::get('{key}/bai-viet', 'PageController@parentcategory')->name('parentcategory');
-	Route::get('{parentcategorykey}/{key}', 'PageController@category')->name('category');
+	Route::get('danh-muc/{key}', 'PageController@parentcategory')->name('parentcategory');
+	Route::get('danh-muc/{parentcategorykey}/{key}', 'PageController@category')->name('category');
 
 	// article detail
-	Route::get('{key}.html', 'PageController@article')->name('article');
+	Route::get('bai-viet/{categorykey}/{key}.html', 'PageController@article')->name('article');
 });

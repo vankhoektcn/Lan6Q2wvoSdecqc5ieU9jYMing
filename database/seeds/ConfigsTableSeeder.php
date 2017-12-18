@@ -15,7 +15,7 @@ class ConfigsTableSeeder extends Seeder
 		Config::create([
 			'key' => 'site_name',
 			'text' => 'Tên trang web',
-			'value' => 'Chia sẻ kinh nghiệm cưới'
+			'value' => 'Landing Việt Nam'
 		]);
 		/*
 		Config::create([
@@ -32,17 +32,17 @@ class ConfigsTableSeeder extends Seeder
 		Config::create([
 			'key' => 'site_title',
 			'text' => 'Tiêu đề trang web',
-			'value' => 'Chia sẻ kinh nghiệm cưới'
+			'value' => 'Landing Việt Nam'
 		]);
 		Config::create([
 			'key' => 'meta_description',
 			'text' => 'Meta Description',
-			'value' => 'Chia sẻ kinh nghiệm cưới'
+			'value' => 'Landing Việt Nam'
 		]);
 		Config::create([
 			'key' => 'meta_keywords',
 			'text' => 'Meta Keywords',
-			'value' => 'Chia sẻ kinh nghiệm cưới'
+			'value' => 'Landing Việt Nam'
 		]);
 		Config::create([
 			'key' => 'headquarter_address_street',
@@ -92,7 +92,12 @@ class ConfigsTableSeeder extends Seeder
 		Config::create([
 			'key' => 'hot_line',
 			'text' => 'Hotline',
-			'value' => '090 685 56 54'
+			'value' => '0932093221'
+		]);
+		Config::create([
+			'key' => 'hot_line_show',
+			'text' => 'Hotline',
+			'value' => '0932-0932-21'
 		]);
 		Config::create([
 			'key' => 'opening_hours',
@@ -112,7 +117,7 @@ class ConfigsTableSeeder extends Seeder
 		Config::create([
 			'key' => 'display_name_send_mail',
 			'text' => 'Tên hiển thị trên email liên hệ',
-			'value' => 'Chia sẻ kinh nghiệm cưới'
+			'value' => 'Landing Việt Nam'
 		]);
 		Config::create([
 			'key' => 'address_received_mail',

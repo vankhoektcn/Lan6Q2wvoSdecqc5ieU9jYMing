@@ -19,6 +19,11 @@ class Project extends BaseModel
 		return $this->belongsToMany('App\ProjectCategory');
 	}
 
+	public function firstProjectCategories()
+	{
+		return $this->belongsToMany('App\ProjectCategory')->first();
+	}
+
 	public function projectType()
 	{
 		return $this->belongsTo('App\ProjectType');

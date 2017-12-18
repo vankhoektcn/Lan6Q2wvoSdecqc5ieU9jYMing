@@ -7,63 +7,50 @@
 @endsection
 
 @section('body')
-			<div class="page">
-				<div class="page_header clearfix page_margin_top">
-					<div class="page_header_left">
-						<h1 class="page_title">{{ $category->name }}</h1>
-					</div>
-					<div class="page_header_right">
-						<ul class="bread_crumb">
-							<li>
-								<a title="Home" href="/">
-									Trang chủ
-								</a>
-							</li>
-							<li class="separator icon_small_arrow right_gray">
-								&nbsp;
-							</li>
-							<li>
-								{{ $category->name }}
-							</li>
-						</ul>
-					</div>
-				</div>
-				<div class="page_layout clearfix">
-					<div class="divider_block clearfix">
-						<hr class="divider first">
-						<hr class="divider subheader_arrow">
-						<hr class="divider last">
-					</div>
-					<div class="row">
-						<div class="column column_2_3">
-							@include('frontend.partials1.postsCarousel')
-							
-							@foreach($childrensCategory as $key => $category)
-							<div class="row page_margin_top_section">
-								<h4 class="box_header"><a href="{{$category->getLink()}}" title="{{$category->name}}">{{$category->name}}</a></h4>
-								@include('frontend.partials1.category2columns')	
-							</div>			
-							@endforeach
-							
-						</div>
-						<div class="column column_1_3 page_margin_top">
-							@if(isset($parentCategory))
-								<h4 class="box_header">{{$parentCategory->name}}</h4>
-								@foreach($parentCategory->childrens()->where('published', 1)->get() as $key => $category)
-								@include('frontend.partials1.parentCategoryBox')				
-								@endforeach
-							@endif
+	@include('frontend.partials.breadcrumb')
+	
+	<section class="section-light padt3x">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12 col-md-9">
+					@if(count($mainArticles) > 0)
+						@foreach($mainArticles as $key => $article)
+						@include('frontend.partials.listArticles')
+						@endforeach
+						{!! $mainArticles->render() !!}
+						<div class="margin-top-45"></div>
+					@endif	
 
-							<h4 class="box_header @if(isset($parentCategory)) page_margin_top_section @endif">Mới nhất</h4>
-							@include('frontend.partials1.newPosts13')
-							@if(isset($myPublic))
-								<h4 class="box_header page_margin_top_section"><a href="{{$myPublic->getLink()}}" title="{{$myPublic->name}}">{{$myPublic->name}}</a></h4>
-								@foreach($myPublic->childrens()->where('published', 1)->get() as $key => $category)
-								@include('frontend.partials1.parentCategoryBox')				
-								@endforeach
-							@endif
+					@foreach($category->childrens()->where('published', 1)->get() as $key => $category)
+					<div class="row">
+						<div class="col-xs-12 col-lg-12">
+							<!-- <h5 class="subtitle-margin">latest from</h5> -->
+							<a href="{{$category->getLink()}}"><h1 class="">{{$category->name}}<span class="special-color">.</span></h1></a>
+						</div>					
+						<div class="col-xs-12">
+							<div class="title-separator-primary"></div>
 						</div>
+						
+					</div>
+					<div class="row margin-top-30">
+						<div class="masonry-grid masonry-grid-short">
+							<!-- width of .grid-sizer used for columnWidth -->
+							<div class="masonry-grid-sizer"></div>
+							@foreach($category->articles()->where('published', 1)->orderBy('id','desc')->take(5)->get() as $key => $article)
+							@include('frontend.partials.gridArticles')
+							@endforeach
+						</div>
+					</div>
+					@endforeach
+				</div>
+				<div class="col-xs-12 col-md-3">
+					<div class="sidebar">
+						@include('frontend.partials.sidebarCategories')
+
+						@include('frontend.partials.sidebarLastestNews')
 					</div>
 				</div>
 			</div>
+		</div>
+	</section>
 @endsection
