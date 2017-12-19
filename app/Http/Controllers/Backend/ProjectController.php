@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use Auth;
 use DB;
 use DateTime;
+use Carbon\Carbon;
 use App\Common;
 use App\Language;
 use App\Attachment;
@@ -50,6 +51,7 @@ class ProjectController extends Controller
 	 */
 	public function store(ProjectRequest $request)
 	{
+		//dd($request->input('Project.ProjectTranslation.vi.name'));
 		//$this->authorize('create', Project::class);
 		// find language generate key
 		$languageDefault = Language::where('is_key_language', 1)->first();
@@ -79,7 +81,11 @@ class ProjectController extends Controller
 			$project->map_longitude = $request->input('Project.map_longitude', null);
 
 			$project->priority = $request->input('Project.priority', 0);
-			$project->published = $request->input('Project.published');
+			$project->published = $request->input('Project.published', 0);
+			if($project->published){
+				$project->published_by = $user->id;
+				$project->published_at = Carbon::now();	
+			}
 			$project->created_by = $user->id;
 			$project->updated_by = $user->id;
 			$project->save();
@@ -123,7 +129,7 @@ class ProjectController extends Controller
 			}
 
 			// Create Project Articles
-			$project_part_name = ['Vị trí','Tiện ích','Mặt bằng'
+			/*$project_part_name = ['Vị trí','Tiện ích','Mặt bằng'
             ,'Nhà mẫu','Thanh toán'];
 			$project_part_type = ['E','E','E'
 			,'E','E'];
@@ -153,7 +159,7 @@ class ProjectController extends Controller
 					'meta_description' => $name.' '.$project->name,
 					'meta_keywords' => $name.' '.$project->name
 				]));
-        	}
+        	}*/
 
 			$project->save();
 
@@ -231,6 +237,10 @@ class ProjectController extends Controller
 
 			$project->priority = $request->input('Project.priority', 0);
 			$project->published = $request->input('Project.published', 0);
+			if($project->published){
+				$project->published_by = $user->id;
+				$project->published_at = Carbon::now();	
+			}
 			$project->updated_by = $user->id;
 			$project->save();
 
@@ -346,7 +356,7 @@ class ProjectController extends Controller
 				return response()->json($projects->toArray());
 			}
 
-			$projects = Project::with('attachments', 'projectCategories', 'projectType', 'tags')->orderBy('priority')->get();
+			$projects = Project::with('attachments', 'projectCategories', 'projectType', 'tags')->orderBy('created_at', 'desc')->get();
 			return response()->json($projects->toArray());
 		}
 	}
