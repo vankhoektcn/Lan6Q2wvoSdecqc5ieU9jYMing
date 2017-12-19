@@ -26,7 +26,7 @@
 						</div>
 						<figure><a href="#"><img src="{{ $article->getFirstAttachment() }}" alt="{{$article->name}}" class="zoom" /></a></figure>
 
-						<div class="blog-text">
+						<div class="blog-text article-content">
 						{!! $article->content !!} 
 						</div>
 						<div class="agent-social-bar margin-top-30">

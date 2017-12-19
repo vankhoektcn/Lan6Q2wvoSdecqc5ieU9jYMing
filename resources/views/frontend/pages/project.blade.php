@@ -100,7 +100,7 @@
 							</div>
 							<div class="clearfix"></div>	
 							<div class="title-separator-primary"></div>
-							<p class="details-desc">{!! $project->content !!} </p>
+							<p class="details-desc project-content">{!! $project->content !!} </p>
 						</div>
 						<div class="col-xs-12 col-sm-5 col-md-4 col-lg-3">
 							<div class="details-parameters-price">{{$project->price_description}}</div>
