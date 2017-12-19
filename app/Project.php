@@ -11,7 +11,7 @@ class Project extends BaseModel
 	use SoftDeletes;
 	use \Dimsav\Translatable\Translatable;
 
-	public $translatedAttributes = ['name', 'address', 'summary', 'price_description', 'content', 'meta_description', 'meta_keywords'];
+	public $translatedAttributes = ['name', 'summary', 'price_description', 'content', 'meta_description', 'meta_keywords'];
 	protected $dates = ['deleted_at'];
 
 	public function projectCategories()

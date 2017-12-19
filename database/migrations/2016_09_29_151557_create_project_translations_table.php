@@ -18,7 +18,7 @@ class CreateProjectTranslationsTable extends Migration
 			$table->integer('project_id')->unsigned();
 			$table->string('locale', 5);
 			$table->string('name', 250);
-			$table->string('address', 250)->nullable();			
+			// $table->string('address', 250)->nullable();			
             $table->string('price_description',100)->nullable();
 			$table->string('summary', 500);
 			$table->text('content');
