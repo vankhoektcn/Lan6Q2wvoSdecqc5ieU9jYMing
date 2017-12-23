@@ -1,7 +1,7 @@
 	<section class="section-dark no-padding">
 		<div class="container">
 			<div class="row">
-				<ol class="breadcrumb mrgb1x">
+				<ol class="breadcrumb mrgt1x mrgb0">
 				    <li><a href="/">Home</a></li>
 				    @if(isset($breadcrumb))
 				    	{!! $breadcrumb !!}
