@@ -19,7 +19,7 @@
 				<!-- Slides -->
 				@foreach($project->getVisibleAttachments() as $key => $attachment)
 				<div class="swiper-slide">
-					<div class="slide-bg swiper-lazy" data-background="{{$attachment->getLink()}}" data-sub-html="<strong>this is a caption 1</strong><br/>Second line of the caption"></div>
+					<div class="slide-bg swiper-lazy" data-background="{{$attachment->getLink()}}" data-sub-html="<strong>{{$project->name}}</strong><br/>..."></div>
 					<!-- Preloader image -->
 					<div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
 					<div class="container">
@@ -90,7 +90,7 @@
 			<div class="row">
 				<div class="col-xs-12">
 					<div class="row">
-						<div class="col-xs-12 col-sm-7 col-md-8 col-lg-9">
+						<div class="col-xs-12 col-sm-7 col-md-8 col-lg-9 project-content">
 							<div class="details-image pull-left hidden-xs">
 								<i class="fa fa-home"></i>
 							</div>
@@ -100,29 +100,29 @@
 							</div>
 							<div class="clearfix"></div>	
 							<div class="title-separator-primary"></div>
-							<p class="details-desc project-content">{!! $project->content !!} </p>
+							<p class="details-desc">{!! $project->content !!} </p>
 						</div>
 						<div class="col-xs-12 col-sm-5 col-md-4 col-lg-3">
 							<div class="details-parameters-price">{{$project->price_description}}</div>
 							<div class="details-parameters">
 								<div class="details-parameters-cont">
 									<div class="details-parameters-name">Diện tích</div>
-									<div class="details-parameters-val">54m<sup>2</sup></div>
+									<div class="details-parameters-val">...<sup></sup></div>
 									<div class="clearfix"></div>	
 								</div>
 								<div class="details-parameters-cont">
 									<div class="details-parameters-name">Phòng ngủ</div>
-									<div class="details-parameters-val">3</div>
+									<div class="details-parameters-val">...</div>
 									<div class="clearfix"></div>	
 								</div>
 								<div class="details-parameters-cont">
 									<div class="details-parameters-name">Toilet</div>
-									<div class="details-parameters-val">2</div>
+									<div class="details-parameters-val">...</div>
 									<div class="clearfix"></div>	
 								</div>
 								<div class="details-parameters-cont">
 									<div class="details-parameters-name">Bãi giữ xe</div>
-									<div class="details-parameters-val">2</div>
+									<div class="details-parameters-val">...</div>
 									<div class="clearfix"></div>	
 								</div>
 							</div>

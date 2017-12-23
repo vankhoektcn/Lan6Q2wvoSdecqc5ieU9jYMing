@@ -4,12 +4,12 @@
 				<div class="col-xs-12 col-sm-12 col-lg-6">
 					<!-- <h4 class="second-color">Landing<span class="special-color">.</span></h4> -->
 					<div class="">
-						<img src="/frontend/images/logo-light.png" alt="" class="img-responsive">
+						<img src="/frontend/images/logo-landing.png" alt="" class="img-responsive">
 					</div>
 					<div class="footer-title-separator">
 					</div>
 					<div class="quote-box">
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur.</p>
+						<p>Landing Việt Nam, nơi mà khách hàng không phải đau đầu bất cứ một vấn đề gì dù là nhỏ nhất về  đầu tư, mua bán, sang nhượng, cho thuê bất động sản…. Tất cả mọi công việc đau đầu đó đã có Landing Việt Nam đảm nhận thay cho khác hàng. Đến với Landing Việt Nam khách hàng sẽ tiết kiệm được rất nhiều thời gian, tiền bạc, công sức, và được cung cấp đầy đủ, chân thật mọi thông tin về dự án nói riêng và thị trường bất động sản nói chung. Những quyết định mua bán của khách hàng đưa ra sẽ chính xác nhất mà không phải hối tiếc về sau. “Đó Cũng Chính Là Kim Chỉ Nam Của Landing Việt Nam Từ Ngày Thành Lập.</p>
 						<div class="small-triangle"></div>
 						<div class="small-icon"><i class="fa fa-quote-right"></i></div>
 					</div>

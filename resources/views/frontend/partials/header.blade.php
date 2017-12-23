@@ -73,7 +73,7 @@
 						<span class="icon-bar icon-bar3"></span>
 					</button>
 					<a href="/" title="" class="navbar-brand">
-						<img src="/frontend/images/logo-dark.png" alt="Apartment - Premium Real Estate Template" />
+						<img src="/frontend/images/logo-landing.png" style="max-height: 100px;" alt="Landing Viêt Nam" />
 					</a>
 				</div>
 				<div id="navbar" class="navbar-collapse collapse">
