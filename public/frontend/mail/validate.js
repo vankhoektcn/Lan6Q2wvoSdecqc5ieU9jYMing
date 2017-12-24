@@ -38,9 +38,9 @@ function postHTTPObject() {
 
 function sendEmail()
 {
-	http.open("POST", "mail/validate.php");
+	http.open("POST", "/lien-he.html");
 	http.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    http.send("sendmail=1" + "&name=" + (document.getElementById("name").value) + "&mail=" + (document.getElementById("mail").value) + "&phone=" + (document.getElementById("phone").value) + "&message=" + (document.getElementById("message").value));
+    http.send("sendmail=1" + "&name=" + (document.getElementById("name").value) + "&mail=" + (document.getElementById("mail").value) + "&phone=" + (document.getElementById("phone").value) + "&message=" + (document.getElementById("message").value) + "&token=" + (document.getElementById("csrf-token").value));
 
 	http.onreadystatechange = handleHttpResponse;
 }

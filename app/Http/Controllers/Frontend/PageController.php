@@ -448,18 +448,25 @@ class PageController extends Controller
 		}
 		$this->setMetadataArticle($article, $category);
 
-		$hotnews = $category->articles()->where('published', 1)->orderBy('id', 'desc')->take(5)->get();
-		$parentCategory = $category->parent()->where('published', 1)->first();
-		if ($parentCategory == null) {
-			$parentCategory = ArticleCategory::where('published', 1)->orderBy('priority')->first();
-		}
-		$newPosts13 = Article::where('published', 1)->orderBy('published_at', 'desc')->take(5)->get();		
-		$postsCarousel = $article->relatedArticles()->where('published', 1)->orderBy('created_by', 'desc')->get();
-		//return view('frontend.pages.article', compact('article', 'category', 'hotnews', 'latestPosts'));
 		$breadcrumb = '<li><a href="'.$category->getLink().'">'.$category->name.'</a></li>
 				    <li class="active">'.$article->name.'</li>';
-		return $this->master('frontend.pages.article', compact('article', 'category', 'hotnews', 'latestPosts', 'parentCategory', 'newPosts13', 'postsCarousel', 'breadcrumb'));
+		return $this->master('frontend.pages.article', compact('article', 'category', 'breadcrumb'));
 	}
+
+
+	public function tuyenDung()
+	{
+		$article = Article::findByKey('tuyen-dung')->first();
+		if ($article == null) {
+			abort(404);
+		}
+		$category = null;
+		$this->setMetadataArticle($article, $category);
+
+		$breadcrumb = '<li><a href="'.$article->getLink().'">'.$article->name.'</a></li>';
+		return $this->master('frontend.pages.article', compact('article', 'category', 'breadcrumb'));
+	}
+	
 
 	public function projects($key)
 	{
