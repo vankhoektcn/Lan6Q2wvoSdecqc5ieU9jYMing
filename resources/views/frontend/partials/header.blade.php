@@ -119,9 +119,9 @@
 							</ul>
 						</li>
 						<li class="dropdown">
-							<a href="#" class="" >Tuyển dụng</a>
+							<a href="{{ route('tuyenDung') }}" class="" >Tuyển dụng</a>
 						</li>
-						<li><a href="submit-property.html" class="special-color">Liên hệ</a></li>
+						<li><a href="{{ route('contact') }}" class="special-color">Liên hệ</a></li>
 					</ul>
 				</div>
 			</div>

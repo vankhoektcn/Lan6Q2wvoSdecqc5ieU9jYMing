@@ -113,6 +113,7 @@ Route::group(['namespace' => 'Frontend'], function()
 	Route::get('/landing/{key}.html', 'PageController@landingArticle')->name('landingArticle');
 	Route::get('lien-he.html', 'PageController@contact')->name('contact');
 	Route::post('lien-he.html', 'PageController@createContact')->name('contact.create');
+	Route::get('tuyen-dung.html', 'PageController@tuyenDung')->name('tuyenDung');
 
 	Route::get('gio-hang.html', 'PageController@shoppingCart')->name('shopping.cart');
 	Route::get('thong-tin-thanh-toan.html', 'PageController@paymentInfo')->name('payment.info');

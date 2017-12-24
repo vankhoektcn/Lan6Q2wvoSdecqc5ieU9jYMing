@@ -17,7 +17,9 @@
 						<h2 class="title-negative-margin"><a href="{{$article->getLink()}}" alt="{{$article->name}}">{{$article->name}}</a><span class="special-color">.</span></h2>
 						<!-- <a href="#" class="title-link"><div class="blog-top-icon pull-left"><i class="fa fa-user"></i>Joshua Smith</div></a> -->
 						<a href="#" class="title-link"><div class="blog-top-icon pull-left"><i class="fa fa-calendar-o"></i>{{ $article->getCreatedAtFormat() }}</div></a>
+						@if($article->firstArticleCategories())
 						<a href="{{$article->firstArticleCategories()->getLink()}}" class="title-link"><div class="blog-top-icon pull-left"><i class="fa fa-folder-open-o"></i>{{$article->firstArticleCategories()->name}}</div></a>
+						@endif
 						<!-- <a href="#" class="title-link"><div class="blog-top-icon pull-left"><i class="fa fa-comment-o"></i>2</div></a> -->
 						<div class="clearfix"></div>						
 						<div class="title-separator-primary"></div>

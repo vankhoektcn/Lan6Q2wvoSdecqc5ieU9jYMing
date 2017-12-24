@@ -27,6 +27,13 @@
     <link id="skin" rel="stylesheet" type="text/css" href="/frontend/css/apartment-colors-blue.css">
 	
 	<link rel="stylesheet" type="text/css" href="/frontend/css/customize.css">
+	@yield('customize.js.head')
+
+	@yield('plugins.css')
+	@yield('customize.css')
+
+	{!! $config->getValuebyKey('embed_script_head') !!}
+
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -48,6 +55,9 @@ src="https://www.facebook.com/tr?id=190771654806895&ev=PageView&noscript=1"
 <!-- End Facebook Pixel Code -->
 </head>
 <body>
+
+{!! $config->getValuebyKey('embed_script_body_top') !!}
+
 <div class="loader-bg hide"></div>
 <div id="wrapper">
 	
@@ -200,6 +210,10 @@ src="https://www.facebook.com/tr?id=190771654806895&ev=PageView&noscript=1"
 	
 	</script>
 
+	@yield('plugins.js')
+	@yield('customize.js')
+	{!! $config->getValuebyKey('embed_script_body_bottom') !!}
+	
 	</body>
 
 <!-- Mirrored from apartment-html.chart.civ.pl/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 17 Aug 2017 06:09:48 GMT -->
