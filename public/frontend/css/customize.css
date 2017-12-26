@@ -138,3 +138,7 @@
     max-width: 100% !important;
     height: auto;
 }
+body, .huge-header, .list-offer-right, .list-offer-right-large, footer a, .blue-ul a, .tag-div, address.contact-info a, .ticks-ul a, .custom-ul a, .masonry-grid-item a, .masonry-offers .masonry-grid-item a:hover, .list-agency-right, .list-agency-right-large, .list-offer-text a, .list-offer-text a:hover {
+    /* color: #898989; */
+       color: #313030;
+}
