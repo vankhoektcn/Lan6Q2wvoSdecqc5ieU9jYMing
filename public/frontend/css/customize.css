@@ -133,3 +133,8 @@
 .footer-copyrights {
     text-align: left; 
 }
+.archive-item figure img {
+    width: auto !important;
+    max-width: 100% !important;
+    height: auto;
+}
