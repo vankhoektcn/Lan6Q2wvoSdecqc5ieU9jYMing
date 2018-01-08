@@ -89,11 +89,11 @@ class PageController extends Controller
 	{
 		$this->setMetadata();
 		$projectSlideshow = ProjectCategory::findByKey('slideshow-chinh')->first()->projects()->orderBy('published_at', 'desc')->take(5)->get();
-		$duAnNoiBat = ProjectCategory::findByKey('du-an-noi-bat')->first()->projects()->take(4)->get();
+		$duAnNoiBat = ProjectCategory::findByKey('du-an-noi-bat')->first()->projects()->orderBy('published_at', 'desc')->take(4)->get();
 		$camNhanKh = Testimonial::where('published', 1)->orderBy('priority')->take(10)->get();
-		$duAnMoiNhat = ProjectCategory::findByKey('du-an-moi-nhat')->first()->projects()->take(4)->get();
-		$tinDuAnMoiNhat = ArticleType::findByKey('moi-nhat')->first()->articles()->where('project_id', '>', 0)->take(4)->get();
-		$tinDuAnXemNhieu = ArticleType::findByKey('xem-nhieu')->first()->articles()->where('project_id', '>', 0)->take(4)->get();
+		$duAnMoiNhat = ProjectCategory::findByKey('du-an-moi-nhat')->first()->projects()->orderBy('published_at', 'desc')->take(4)->get();
+		$tinDuAnMoiNhat = ArticleType::findByKey('moi-nhat')->first()->articles()->where('project_id', '>', 0)->orderBy('published_at', 'desc')->take(4)->get();
+		$tinDuAnXemNhieu = ArticleType::findByKey('xem-nhieu')->first()->articles()->where('project_id', '>', 0)->orderBy('published_at', 'desc')->take(4)->get();
 		$chuyenMuc = Article::findByKey('chuyen-muc')->first();
 		$doiTacLanding = Article::findByKey('doi-tac-landing')->first();
 		$news = ArticleType::findByKey('moi-nhat')->first()->articles()->where('published', 1)->orderBy('published_at', 'desc')->take(10)->get();

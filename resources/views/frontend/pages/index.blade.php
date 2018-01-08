@@ -132,7 +132,7 @@
 				<div class="featured-offer-col">
 					<div class="featured-offer-front">
 						<div class="featured-offer-photo">
-							<img src="/frontend/images/featured-offer1.jpg" alt="" />
+							<img src="{{ $project->getFirstAttachment("custom", 360, 270) }}" alt="" />
 							<div class="type-container">
 								<!-- <div class="estate-type">{{$project->name}}</div> -->
 								<div class="transaction-type">{{$project->name}}</div>
@@ -154,13 +154,13 @@
 							</div>							
 						</div> -->
 						<div class="featured-price">
-							$ 320 000
+							{{$project->price_description}}
 						</div>
 					</div>
 					<div class="featured-offer-back">
 						<div id="featured-map1" class="featured-offer-map"></div>
 						<div class="button">	
-							<a href="estate-details-right-sidebar.html" class="button-primary">
+							<a href="{{$project->getLink()}}" class="button-primary">
 								<span>Xem thêm</span>
 								<div class="button-triangle"></div>
 								<div class="button-triangle2"></div>
@@ -196,7 +196,7 @@
 										<div class="list-offer-front">
 									
 											<div class="list-offer-photo">
-												<img src="/frontend/images/grid-offer1.jpg" alt="" />
+												<img src="{{ $project->getFirstAttachment("custom", 270, 180) }}" alt="" />
 												<div class="type-container">
 													<!-- <div class="estate-type">apartment</div> -->
 													<div class="transaction-type">{{$project->projectType->name}}</div>
@@ -204,13 +204,13 @@
 											</div>
 											<div class="list-offer-params">
 												<div class="list-area">
-													<img src="/frontend/images/area-icon.png" alt="" />54m<sup>2</sup>
+													<img src="/frontend/images/area-icon.png" alt="" />...<sup>.</sup>
 												</div>
 												<div class="list-rooms">
-													<img src="/frontend/images/rooms-icon.png" alt="" />3
+													<img src="/frontend/images/rooms-icon.png" alt="" />...
 												</div>
 												<div class="list-baths">
-													<img src="/frontend/images/bathrooms-icon.png" alt="" />1
+													<img src="/frontend/images/bathrooms-icon.png" alt="" />...
 												</div>							
 											</div>	
 										</div>
@@ -218,14 +218,14 @@
 											<div id="list-map1" class="list-offer-map"></div>
 										</div>
 									</div>
-									<a class="list-offer-right" href="estate-details-right-sidebar.html">
+									<a class="list-offer-right" href="{{$project->getLink()}}">
 										<div class="list-offer-text">
 											<div class="list-offer-h4"><h4 class="">{{$project->name}}</h4></div>
 											<div class="clearfix"></div>
 											<div class="list-offer-h4">
 											<h4 class="list-offer-title"><smail><i class="fa fa-map-marker list-offer-localization hidden-xs"></i> {{$project->addressFull()}}</smail></h4></div>
 											<div class="clearfix"></div>
-											Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et.
+											{{$project->summary}}
 											<div class="clearfix"></div>
 										</div>
 										<div class="price-list-cont">

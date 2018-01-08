@@ -362,8 +362,53 @@ ketnoimoi.projects.index = {
 	],
 	init: function () {
 		var thisObj = ketnoimoi.projects.index;
-		thisObj.initTable();
+		thisObj.initFilter();
+		// thisObj.initTable();
 		thisObj.events();
+	},
+	initFilter: function () {
+		var thisObj = ketnoimoi.projects.index;
+		$('.datepicker').datepicker({
+            format: 'dd/mm/yyyy',
+            autoclose: true,
+            todayHighlight: true
+        });
+
+		var initCategories = function (callback) {
+			$.ketnoimoiAjax({
+				url: '/backend/projecttypes/filter',
+				type: 'POST',
+				success: function (data, textStatus, jqXHR) {
+					$.each(data, function (index, item) {
+						var html ='';
+						html += $.format('<option value="{0}">{1}</option>', item.id, item.name);
+						$('#filter_project_type').append(html);
+					});
+					if (typeof callback == 'function') {
+						callback();
+					};
+				}
+			});
+		}
+
+		var initUsers = function (callback) {
+			$.ketnoimoiAjax({
+				url: '/backend/users/filter',
+				type: 'POST',
+				success: function (data, textStatus, jqXHR) {
+					$.each(data, function (index, item) {
+						var html ='';
+						html += $.format('<option value="{0}">{1} {2}</option>', item.id, item.last_name, item.first_name);
+						$('#filter_project_created_by').append(html);
+					});
+					if (typeof callback == 'function') {
+						callback();
+					};
+				}
+			});
+		}
+
+		initCategories(initUsers(thisObj.initTable));		
 	},
 	initTable: function () {
 		var thisObj = ketnoimoi.projects.index;
@@ -371,7 +416,15 @@ ketnoimoi.projects.index = {
 		thisObj.table = new CDatatable({
 			tableId: '#tblEntryList',
 			url: '/backend/projects/filter',
-			params: null,
+			params: {
+				type: 'filter',
+				search: $('#filter_project_code').val(),
+				fromdate: $('#filter_project_created_at_from').val(),
+				todate: $('#filter_project_created_at_to').val(),
+				type: $('#filter_project_type').val(),
+				createdby: $('#filter_project_created_by').val(),
+				category: $('#filter_project_categories').val()
+			},
 			data: [],
 			rowId: 'id',
 			columns: [
@@ -559,6 +612,11 @@ events: function () {
 				}
 			});
 		});
+
+	$(document).on('click', '#btn_filter_project', function (argument) {
+		$('#tblEntryList').DataTable().destroy();
+		ketnoimoi.projects.index.initTable();
+	});
 },
 delete: function (id) {
 	var thisObj = ketnoimoi.projects.index;
