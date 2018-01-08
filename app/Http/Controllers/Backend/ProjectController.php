@@ -336,6 +336,8 @@ class ProjectController extends Controller
 	{
 		if ($request->ajax()) {
 			$type = $request->input('type', '');
+			$user = Auth::user();
+
 			if ($type == 'dropdown') {
 				$multiple = $request->input('multiple', 'false');
 				$ids = $request->input('ids', '');
@@ -353,6 +355,60 @@ class ProjectController extends Controller
 					$projects = Project::whereTranslationLike('name', '%'. $search .'%')->get();
 				}
 				
+				return response()->json($projects->toArray());
+			}
+			elseif ($type == 'filter') {
+				$search = $request->input('search', '');
+				$fromDate = $request->input('fromdate', '');
+				$toDate = $request->input('todate', '');
+				$type = $request->input('type', '');
+				$createdBy = $request->input('createdby', '');
+				$category = $request->input('category', '');
+
+				$query = Project::with('attachments', 'projectCategories', 'projectType', 'tags');
+
+
+				if ($type != '') {
+					$query->where('project_type_id', $type);
+				}
+				if ($category != '') {
+					$query->whereHas('projectCategories', function ($query) use ($category) {
+						$query->where('id', $category);
+					});
+				}
+
+				if ($projectid != '') {
+					$query->where('project_id', $projectid);
+				}
+
+				if ($createdBy != '') {
+					$query->where('created_by', $createdBy);
+				}
+
+				if ($fromDate != '') {
+					$query->where('created_at', '>=', DateTime::createFromFormat('d/m/Y', $fromDate));
+				}
+
+				if ($toDate != '') {
+					$query->where('created_at', '<=', DateTime::createFromFormat('d/m/Y', $toDate));
+				}
+
+				if ($search != '') {
+					$query->whereTranslationLike('name', '%'. $search .'%');
+				}
+				/*if($projectTypeId){
+					$query->whereExists(function ($queryDb1) use ($projectTypeId) {
+							$queryDb1->select(DB::raw(1))
+							->from('project_project_category')
+							->whereRaw('project_project_category.project_id = projects.id')
+							->where('project_project_category.project_category_id', '=',$projectTypeId);
+						});
+				}*/
+				if(!$user->hasRoles(['Administrator', 'SuperModerator'])){
+					$query->where('created_by', '=', $user->id);
+				}
+
+				$projects = $query->get();
 				return response()->json($projects->toArray());
 			}
 

@@ -56,27 +56,28 @@
 					<label style="display:block;">&nbsp;</label>
 					<button type="button" id="btn_filter_articles" class="btn btn-success btn-sm btn-flat btn-block">Lọc </button>
 				</div>
-				<!-- /.box-header -->
-				<div class="box-body">
-					<table id="tblEntryList" class="table table-bordered table-striped table-hover">
-						<thead>
-							<tr>
-								<th>#</th>
-								<th>H.ảnh</th>
-								<th>Tên bài viết</th>
-								<th>Stt</th>
-								<th>Danh mục</th>
-								<th>Loại</th>
-								<th>Tags</th>
-								<th>Xuất bản</th>
-								<th>Tác giả</th>
-								<th>T.tác</th>
-							</tr>
-						</thead>
-						<tbody>
-						</tbody>
-					</table>
-				</div>
+			</div>			
+			<!-- /.box-header -->
+			
+			<div class="box-body">
+				<table id="tblEntryList" class="table table-bordered table-striped table-hover">
+					<thead>
+						<tr>
+							<th>#</th>
+							<th>H.ảnh</th>
+							<th>Tên bài viết</th>
+							<th>Stt</th>
+							<th>Danh mục</th>
+							<th>Loại</th>
+							<th>Tags</th>
+							<th>Xuất bản</th>
+							<th>Tác giả</th>
+							<th>T.tác</th>
+						</tr>
+					</thead>
+					<tbody>
+					</tbody>
+				</table>
 			</div>
 		</div>
 	</div>
