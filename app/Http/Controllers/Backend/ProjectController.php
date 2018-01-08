@@ -361,24 +361,20 @@ class ProjectController extends Controller
 				$search = $request->input('search', '');
 				$fromDate = $request->input('fromdate', '');
 				$toDate = $request->input('todate', '');
-				$type = $request->input('type', '');
+				$projecttype = $request->input('projecttype', '');
 				$createdBy = $request->input('createdby', '');
 				$category = $request->input('category', '');
 
 				$query = Project::with('attachments', 'projectCategories', 'projectType', 'tags');
 
 
-				if ($type != '') {
-					$query->where('project_type_id', $type);
+				if ($projecttype != '') {
+					$query->where('project_type_id', $projecttype);
 				}
 				if ($category != '') {
 					$query->whereHas('projectCategories', function ($query) use ($category) {
 						$query->where('id', $category);
 					});
-				}
-
-				if ($projectid != '') {
-					$query->where('project_id', $projectid);
 				}
 
 				if ($createdBy != '') {

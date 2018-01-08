@@ -31,17 +31,23 @@
 					<label for="filter_articles_code">Từ khóa</label>
 					<input type="text" class="form-control input-sm" id="filter_articles_code" name="search" placeholder="Từ khóa">
 				</div>
-				<div class="form-group col-xs-2">
+				<div class="form-group col-xs-1">
 					<label for="filter_created_at_from">Từ ngày</label>
 					<input type="text" class="form-control input-sm datepicker" data-date-format="dd/mm/yyyy" value="{{ date_format(new DateTime('- 1 month'), "d/m/Y") }}" id="filter_articles_created_at_from" name="fromdate" placeholder="dd/mm/yyyy">
 				</div>
-				<div class="form-group col-xs-2">
+				<div class="form-group col-xs-1">
 					<label for="filter_created_at_to">Đến ngày</label>
 					<input type="text" class="form-control input-sm datepicker" data-date-format="dd/mm/yyyy" value="{{ date_format(new DateTime(), "d/m/Y") }}" id="filter_articles_created_at_to" name="todate" placeholder="dd/mm/yyyy">
 				</div>
 				<div class="form-group col-xs-2">
-					<label for="filter_articles_categories">Danh mục</label>
+					<label for="filter_articles_categories">Loại</label>
 					<select class="form-control input-sm" style="width:100%;" id="filter_articles_categories" name="category" placeholder="Danh mục">			
+						<option value="">-- Chọn Loại --</option>
+					</select>
+				</div>
+				<div class="form-group col-xs-2">
+					<label for="filter_articles_types">Danh mục</label>
+					<select class="form-control input-sm" style="width:100%;" id="filter_articles_types" name="articletype" placeholder="danh mục">			
 						<option value="">-- Chọn danh mục --</option>
 					</select>
 				</div>
@@ -67,8 +73,8 @@
 							<th>H.ảnh</th>
 							<th>Tên bài viết</th>
 							<th>Stt</th>
-							<th>Danh mục</th>
 							<th>Loại</th>
+							<th>Danh mục</th>
 							<th>Tags</th>
 							<th>Xuất bản</th>
 							<th>Tác giả</th>

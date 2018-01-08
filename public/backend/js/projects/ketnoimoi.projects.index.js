@@ -374,7 +374,7 @@ ketnoimoi.projects.index = {
             todayHighlight: true
         });
 
-		var initCategories = function (callback) {
+		var initProjectTypes = function (callback) {
 			$.ketnoimoiAjax({
 				url: '/backend/projecttypes/filter',
 				type: 'POST',
@@ -383,6 +383,23 @@ ketnoimoi.projects.index = {
 						var html ='';
 						html += $.format('<option value="{0}">{1}</option>', item.id, item.name);
 						$('#filter_project_type').append(html);
+					});
+					if (typeof callback == 'function') {
+						callback();
+					};
+				}
+			});
+		}
+
+		var initCategories = function (callback) {
+			$.ketnoimoiAjax({
+				url: '/backend/projectcategories/filter',
+				type: 'POST',
+				success: function (data, textStatus, jqXHR) {
+					$.each(data, function (index, item) {
+						var html ='';
+						html += $.format('<option value="{0}">{1}</option>', item.id, item.name);
+						$('#filter_project_categories').append(html);
 					});
 					if (typeof callback == 'function') {
 						callback();
@@ -408,7 +425,7 @@ ketnoimoi.projects.index = {
 			});
 		}
 
-		initCategories(initUsers(thisObj.initTable));		
+		initProjectTypes(initCategories(initUsers(thisObj.initTable)));		
 	},
 	initTable: function () {
 		var thisObj = ketnoimoi.projects.index;
@@ -421,7 +438,7 @@ ketnoimoi.projects.index = {
 				search: $('#filter_project_code').val(),
 				fromdate: $('#filter_project_created_at_from').val(),
 				todate: $('#filter_project_created_at_to').val(),
-				type: $('#filter_project_type').val(),
+				projecttype: $('#filter_project_type').val(),
 				createdby: $('#filter_project_created_by').val(),
 				category: $('#filter_project_categories').val()
 			},
@@ -452,20 +469,6 @@ ketnoimoi.projects.index = {
 				className: 'text-right',
 			},
 			{
-				data: 'project_categories',
-				render: function (data, type, row) {
-					if (type=== 'display' && data && data.length) {
-						data.sort($.sortByProperty('id'));
-						var html = '';
-						$.each(data, function (index, item) {
-							html += $.format('<span class="label label-success">{0}</span> ', item.name);
-						});
-						return html;
-					}
-					return data;
-				}
-			},
-			{
 				data: 'project_type',
 				render: function (data, type, row) {
 					if (type=== 'display' && data ) {
@@ -475,6 +478,20 @@ ketnoimoi.projects.index = {
 							html += $.format('<span class="label label-success">{0}</span> ', item.name);
 						});*/
 						var html = $.format('<span class="label label-success">{0}</span> ', data.name);
+						return html;
+					}
+					return data;
+				}
+			},
+			{
+				data: 'project_categories',
+				render: function (data, type, row) {
+					if (type=== 'display' && data && data.length) {
+						data.sort($.sortByProperty('id'));
+						var html = '';
+						$.each(data, function (index, item) {
+							html += $.format('<span class="label label-success">{0}</span> ', item.name);
+						});
 						return html;
 					}
 					return data;

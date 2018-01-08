@@ -11,7 +11,7 @@
 	<h1>
 		Danh Sách Dự Án
 		<!-- <small>Optional description</small> -->
-		<button type="button" class="btn btn-sm btn-success btn-flat pull-left" data-toggle="modal" data-target="#modalEntry">Dự án mới</button>
+		<button type="button" class="btn btn-sm btn-success btn-flat" data-toggle="modal" data-target="#modalEntry">Dự án mới</button>
 	</h1>
 	<ol class="breadcrumb">
 		<li><a href="{{ route('dashboard.index') }}"><i class="fa fa-dashboard"></i> Màn hình chính</a></li>
@@ -31,11 +31,11 @@
 					<label for="filter_project_code">Từ khóa</label>
 					<input type="text" class="form-control input-sm" id="filter_project_code" name="search" placeholder="Từ khóa">
 				</div>
-				<div class="form-group col-xs-2">
+				<div class="form-group col-xs-1">
 					<label for="filter_created_at_from">Từ ngày</label>
 					<input type="text" class="form-control input-sm datepicker" data-date-format="dd/mm/yyyy" value="{{ date_format(new DateTime('- 1 month'), "d/m/Y") }}" id="filter_project_created_at_from" name="fromdate" placeholder="dd/mm/yyyy">
 				</div>
-				<div class="form-group col-xs-2">
+				<div class="form-group col-xs-1">
 					<label for="filter_created_at_to">Đến ngày</label>
 					<input type="text" class="form-control input-sm datepicker" data-date-format="dd/mm/yyyy" value="{{ date_format(new DateTime(), "d/m/Y") }}" id="filter_project_created_at_to" name="todate" placeholder="dd/mm/yyyy">
 				</div>
@@ -46,7 +46,7 @@
 					</select>
 				</div>
 				<div class="form-group col-xs-2">
-					<label for="filter_project_type">Danh mục</label>
+					<label for="filter_project_categories">Danh mục</label>
 					<select class="form-control input-sm" style="width:100%;" id="filter_project_categories" name="category" placeholder="Danh mục">	
 						<option value="">-- Chọn danh mục --</option>
 					</select>
@@ -71,8 +71,8 @@
 							<th>H.ảnh</th>
 							<th>Tên dự án</th>
 							<th>Stt</th>
-							<th>Danh mục</th>
 							<th>Loại</th>
+							<th>Danh mục</th>
 							<th>Tags</th>
 							<th>Xuất bản</th>
 							<th>T.tác</th>
