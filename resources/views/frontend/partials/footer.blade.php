@@ -42,8 +42,7 @@
 						<i class="fa fontawesome-icon fa-phone-square circle-no" style="font-size:18px;margin-right:9px;color:#ec8d38;"></i> Địa chỉ: {{ $config->getFullAddress() }}<br> 
 						<i class="fa fontawesome-icon fa-envelope circle-no" style="font-size:18px;margin-right:9px;color:#ec8d38;"></i> Email: <a href="mailto:{{ $config->getValueByKey('address_received_mail') }}">{{ $config->getValueByKey('address_received_mail') }}</a>
 						</p>
-						<h5 style="margin-top: 1em; margin-bottom: 0.5em;" data-fontsize="16" data-lineheight="22"><span style="font-weight: 400; color: #ddd;">GIỜ MỞ CỬA</span></h5>
-						<p>Chúng tôi luôn hỗ trợ Quý khách 24/24<br> 
+						<h5 style="margin-top: 1em; margin-bottom: 0.5em;" data-fontsize="16" data-lineheight="22"><span style="font-weight: 400; color: #ddd;">GIỜ MỞ CỬA HÀNH CHÍNH</span></h5> 
 						<ul>
 							<li><strong><span style="color: #ec8d38;">Thứ 2-Thứ 6:</span> </strong>8h00' đến 17h30'</li>
 							<li><strong><span style="color: #ec8d38;">Thứ 7:</span> </strong>8h00' đến 17h30'</li>

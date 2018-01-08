@@ -1103,7 +1103,7 @@ jQuery(window).smartresize(function(){
 			sliderHeight = 600;
 			sliderDescTop = 100;
 		} else  {
-			sliderHeight = 910;
+			sliderHeight = 650;// sliderHeight = 910;
 			sliderDescTop = 420;
 		}
 		$("#swiper1").css('height', sliderHeight + 'px');

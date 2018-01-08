@@ -27,11 +27,11 @@
 			</a>
 			<ul class="treeview-menu">
 				<li class="{{ Route::currentRouteName() == 'articles.index' ? 'active' : null }}"><a href="{{ route('articles.index') }}"><i class="fa fa-circle-o" aria-hidden="true"></i> Danh sách bài viết</a></li>
-				@can('create', App\ArticleCategory::class)
-				<li class="{{ Route::currentRouteName() == 'articlecategories.index' ? 'active' : null }}"><a href="{{ route('articlecategories.index') }}"><i class="fa fa-circle-o" aria-hidden="true"></i> Danh mục bài viết</a></li>
-				@endcan
 				@can('create', App\ArticleType::class)
-				<li class="{{ Route::currentRouteName() == 'articletypes.index' ? 'active' : null }}"><a href="{{ route('articletypes.index') }}"><i class="fa fa-circle-o" aria-hidden="true"></i> Loại bài viết</a></li>
+				<li class="{{ Route::currentRouteName() == 'articletypes.index' ? 'active' : null }}"><a href="{{ route('articletypes.index') }}"><i class="fa fa-circle-o" aria-hidden="true"></i> Danh mục bài viết</a></li>
+				@endcan
+				@can('create', App\ArticleCategory::class)
+				<li class="{{ Route::currentRouteName() == 'articlecategories.index' ? 'active' : null }}"><a href="{{ route('articlecategories.index') }}"><i class="fa fa-circle-o" aria-hidden="true"></i> Loại bài viết</a></li>
 				@endcan
 			</ul>
 		</li>

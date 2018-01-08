@@ -324,12 +324,18 @@ class ArticleController extends Controller
 				$search = $request->input('search', '');
 				$fromDate = $request->input('fromdate', '');
 				$toDate = $request->input('todate', '');
+				$articletype = $request->input('articletype', '');
 				$category = $request->input('category', '');
 				$createdBy = $request->input('createdby', '');
 				$projectid = $request->input('projectid', '');
 
 				$query = Article::with('attachments', 'articleCategories', 'articleTypes', 'tags', 'userCreated');
 
+				if ($articletype != '') {
+					$query->whereHas('articleTypes', function ($query) use ($articletype) {
+						$query->where('id', $articletype);
+					});
+				}
 				if ($category != '') {
 					$query->whereHas('articleCategories', function ($query) use ($category) {
 						$query->where('id', $category);

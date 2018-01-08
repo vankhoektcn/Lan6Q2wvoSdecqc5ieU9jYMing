@@ -26,7 +26,7 @@ ketnoimoi.articles.index = {
 			'dbfieldname': 'key'
 		},
 		{
-			'label': 'Danh mục',
+			'label': 'Loại bài viết',
 			'id': 'articleCategories',
 			'name': 'Article[articleCategories][]',
 			'type': 'select',
@@ -44,7 +44,7 @@ ketnoimoi.articles.index = {
 			'multiple': false
 		},
 		{
-			'label': 'Loại bài viết',
+			'label': 'Danh mục',
 			'id': 'articleTypes',
 			'name': 'Article[articleTypes][]',
 			'type': 'select',
@@ -274,6 +274,23 @@ ketnoimoi.articles.index = {
             todayHighlight: true
         });
 
+		var initArticleTypes = function (callback) {
+			$.ketnoimoiAjax({
+				url: '/backend/articletypes/filter',
+				type: 'POST',
+				success: function (data, textStatus, jqXHR) {
+					$.each(data, function (index, item) {
+						var html ='';
+						html += $.format('<option value="{0}">{1}</option>', item.id, item.name);
+						$('#filter_articles_types').append(html);
+					});
+					if (typeof callback == 'function') {
+						callback();
+					};
+				}
+			});
+		}
+
 		var initCategories = function (callback) {
 			$.ketnoimoiAjax({
 				url: '/backend/articlecategories/filter',
@@ -308,7 +325,7 @@ ketnoimoi.articles.index = {
 			});
 		}
 
-		initCategories(initUsers(thisObj.initTable));		
+		initArticleTypes(initCategories(initUsers(thisObj.initTable)));		
 	},
 	initTable: function () {
 		var thisObj = ketnoimoi.articles.index;
@@ -322,6 +339,7 @@ ketnoimoi.articles.index = {
 				fromdate: $('#filter_articles_created_at_from').val(),
 				todate: $('#filter_articles_created_at_to').val(),
 				category: $('#filter_articles_categories').val(),
+				articletype: $('#filter_articles_types').val(),
 				createdby: $('#filter_articles_created_by').val(),
 				projectid: $.getQueryStringByName('projectid')
 			},

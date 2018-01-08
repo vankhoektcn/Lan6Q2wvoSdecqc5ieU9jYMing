@@ -1,6 +1,6 @@
 @extends('backend.layouts.master')
 
-@section('title', 'Danh Mục Bài Viết')
+@section('title', 'Loại Bài Viết')
 
 @section('plugins.css')
 
@@ -9,13 +9,13 @@
 @section('content.head')
 <section class="content-header">
 	<h1>
-		Danh Mục Bài Viết
+		Loại Bài Viết
 		<!-- <small>Optional description</small> -->
 	</h1>
 	<ol class="breadcrumb">
 		<li><a href="{{ route('dashboard.index') }}"><i class="fa fa-dashboard"></i> Màn hình chính</a></li>
 		<li><a href="javascript:;">Bài viết</a></li>
-		<li class="active">Danh mục bài viết</li>
+		<li class="active">Loại bài viết</li>
 	</ol>
 </section>
 @endsection
@@ -26,7 +26,7 @@
 	<div class="col-xs-12">
 		<div class="box box-success">
 			<div class="box-header">
-				<button type="button" class="btn btn-sm btn-success btn-flat pull-left" data-toggle="modal" data-target="#modalEntry">Danh mục mới</button>
+				<button type="button" class="btn btn-sm btn-success btn-flat pull-left" data-toggle="modal" data-target="#modalEntry">Tạo mới</button>
 			</div>
 			<!-- /.box-header -->
 			<div class="box-body">
@@ -34,7 +34,7 @@
 					<thead>
 						<tr>
 							<th>Hình ảnh</th>
-							<th>Tên danh mục</th>
+							<th>Tên Loại</th>
 							<th>Thứ tự</th>
 							<th>Xuất bản</th>
 							<th>Thao tác</th>
