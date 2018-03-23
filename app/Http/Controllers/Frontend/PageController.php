@@ -466,50 +466,6 @@ class PageController extends Controller
 		$breadcrumb = '<li><a href="'.$article->getLink().'">'.$article->name.'</a></li>';
 		return $this->master('frontend.pages.article', compact('article', 'category', 'breadcrumb'));
 	}
-	
-
-	public function projects($key)
-	{
-		$category = ProjectCategory::where('key', $key)->where('published', 1)->first();
-
-		if($category == null)
-			abort(404);
-
-		$limit = Config::getValueByKey('rows_per_page_article');
-		$site_title = $category->name;
-		$site_name = Config::getValueByKey('site_name');
-		$facebook_page = Config::getValueByKey('facebook_page');
-		SEOMeta::setTitle($site_title);
-		SEOMeta::setDescription($category->meta_description);
-		SEOMeta::setKeywords([$category->meta_keywords]);
-		SEOMeta::addMeta('copyright', $site_name);
-		SEOMeta::addMeta('author', $site_name);
-		SEOMeta::addMeta('robots', 'all');
-		SEOMeta::addMeta('revisit-after', '1 days');
-		SEOMeta::addMeta('article:author', $facebook_page);
-		SEOMeta::addMeta('article:publisher', $facebook_page);
-		SEOMeta::addMeta('fb:pages', Config::getValueByKey('facebook_fanpage_id'), 'property');
-		SEOMeta::addMeta('fb:app_id', Config::getValueByKey('facebook_app_id'), 'property');
-		SEOMeta::addAlternateLanguage('vi-vn', $category->getLink());
-		SEOMeta::addAlternateLanguage('en-us', $category->getLink());
-
-		OpenGraph::setTitle($site_title);
-		OpenGraph::setDescription($category->meta_description);
-		OpenGraph::setUrl($category->getLink());
-		OpenGraph::setSiteName($site_name);
-		OpenGraph::addProperty('type', 'website');
-		OpenGraph::addProperty('locale', 'vi_VN');
-		OpenGraph::addProperty('locale:alternate', ['vi_VN', 'en_US']);
-		foreach ($category->getVisibleAttachments() as $attachment) {
-			OpenGraph::addImage($attachment->getLink());
-		}
-		OpenGraph::addProperty('image:width', 1200);
-		OpenGraph::addProperty('image:height', 628);
-
-		$projects = $category->projects()->where('published', 1)->orderBy('id','desc')->paginate($limit);
-
-		return view('frontend.pages.projects', compact('projects', 'category'));
-	}
 
 	public function project($categorykey, $key)
 	{
@@ -1230,4 +1186,54 @@ class PageController extends Controller
 				    <li class="active">'.$category->name.'</li>';
 		return $this->master('frontend.pages.category', compact('mainArticles', 'category', 'breadcrumb'));
 	}
+
+	/** PROJECT GROUP */	
+	
+	public function projectTypes($key)
+	{
+	}
+	public function projectCategories($key)
+	{
+		$category = ProjectCategory::where('key', $key)->first();
+		
+		if($category == null)
+			abort(404);
+
+		$limit = Config::getValueByKey('rows_per_page_article');
+		$site_title = $category->name;
+		$site_name = Config::getValueByKey('site_name');
+		$facebook_page = Config::getValueByKey('facebook_page');
+		SEOMeta::setTitle($site_title);
+		SEOMeta::setDescription($category->meta_description);
+		SEOMeta::setKeywords([$category->meta_keywords]);
+		SEOMeta::addMeta('copyright', $site_name);
+		SEOMeta::addMeta('author', $site_name);
+		SEOMeta::addMeta('robots', 'all');
+		SEOMeta::addMeta('revisit-after', '1 days');
+		SEOMeta::addMeta('article:author', $facebook_page);
+		SEOMeta::addMeta('article:publisher', $facebook_page);
+		SEOMeta::addMeta('fb:pages', Config::getValueByKey('facebook_fanpage_id'), 'property');
+		SEOMeta::addMeta('fb:app_id', Config::getValueByKey('facebook_app_id'), 'property');
+		SEOMeta::addAlternateLanguage('vi-vn', $category->getLink());
+		SEOMeta::addAlternateLanguage('en-us', $category->getLink());
+
+		OpenGraph::setTitle($site_title);
+		OpenGraph::setDescription($category->meta_description);
+		OpenGraph::setUrl($category->getLink());
+		OpenGraph::setSiteName($site_name);
+		OpenGraph::addProperty('type', 'website');
+		OpenGraph::addProperty('locale', 'vi_VN');
+		OpenGraph::addProperty('locale:alternate', ['vi_VN', 'en_US']);
+		foreach ($category->getVisibleAttachments() as $attachment) {
+			OpenGraph::addImage($attachment->getLink());
+		}
+		OpenGraph::addProperty('image:width', 1200);
+		OpenGraph::addProperty('image:height', 628);
+
+		$projects = $category->projects()->where('published', 1)->orderBy('id','desc')->paginate($limit);
+		$breadcrumb = '<li><a href="/danh-muc-du-an">Dự án</a></li> <li class="active">'.$category->name.'</li>';
+		return view('frontend.pages.projectCategories', compact('projects', 'category', 'breadcrumb'));
+	}
+
+	/** END PROJECT GROUP */
 }

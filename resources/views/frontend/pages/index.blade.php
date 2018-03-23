@@ -191,95 +191,14 @@
 						<div class="row list-offer-row">
 							<div class="col-xs-12">
 							@foreach($duAnMoiNhat as $key=>$project)
-								<div class="list-offer">
-									<div class="list-offer-left">
-										<div class="list-offer-front">
-									
-											<div class="list-offer-photo">
-												<img src="{{ $project->getFirstAttachment("custom", 270, 180) }}" alt="" />
-												<div class="type-container">
-													<!-- <div class="estate-type">apartment</div> -->
-													<div class="transaction-type">{{$project->projectType->name}}</div>
-												</div>
-											</div>
-											<div class="list-offer-params">
-												<div class="list-area">
-													<img src="/frontend/images/area-icon.png" alt="" />...<sup>.</sup>
-												</div>
-												<div class="list-rooms">
-													<img src="/frontend/images/rooms-icon.png" alt="" />...
-												</div>
-												<div class="list-baths">
-													<img src="/frontend/images/bathrooms-icon.png" alt="" />...
-												</div>							
-											</div>	
-										</div>
-										<div class="list-offer-back">
-											<div id="list-map1" class="list-offer-map"></div>
-										</div>
-									</div>
-									<a class="list-offer-right" href="{{$project->getLink()}}">
-										<div class="list-offer-text">
-											<div class="list-offer-h4"><h4 class="">{{$project->name}}</h4></div>
-											<div class="clearfix"></div>
-											<div class="list-offer-h4">
-											<h4 class="list-offer-title"><smail><i class="fa fa-map-marker list-offer-localization hidden-xs"></i> {{$project->addressFull()}}</smail></h4></div>
-											<div class="clearfix"></div>
-											{{$project->summary}}
-											<div class="clearfix"></div>
-										</div>
-										<div class="price-list-cont">
-											<div class="list-price">
-												Chi tiết
-											</div>	
-										</div>
-									</a>
-									<div class="clearfix"></div>
-								</div>
-
-								<div class="clearfix"></div>
+								@include('frontend.partials.listProjects')
 							@endforeach
 							</div>
 						</div>
 						
 				</div>
 				<div class="col-xs-12 col-md-3">
-					<div class="sidebar">
-						<div class="sidebar-title-cont mrgt2x">
-							<h4 class="sidebar-title">Tin dự án mới<span class="special-color">.</span></h4>
-							<div class="title-separator-primary"></div>
-						</div>
-						<div class="sidebar-featured-cont">
-						@foreach($tinDuAnMoiNhat as $key=>$article)
-							<div class="sidebar-featured">
-								<a class="sidebar-featured-image" href="{{$article->getLink()}}">
-									<img src="{{$article->getFirstAttachment('custom', 97, 87)}}" alt="{{$article->name}}" />
-									<!-- <div class="sidebar-featured-type">
-										<div class="sidebar-featured-estate">A</div>
-										<div class="sidebar-featured-transaction">S</div>
-									</div> -->
-								</a>
-								<div class="sidebar-featured-title"><a href="{{$article->getLink()}}">{{$article->name}}</a></div>
-								<div class="sidebar-featured-price">{{$article->project->name}}</div>
-								<div class="clearfix"></div>					
-							</div>
-						@endforeach
-						</div>
-						<div class="sidebar-title-cont">
-							<h4 class="sidebar-title">Xem nhiều<span class="special-color">.</span></h4>
-							<div class="title-separator-primary"></div>
-						</div>
-						<div class="sidebar-blog-cont">
-						@foreach($tinDuAnXemNhieu as $key=>$article)
-							<article>
-								<a href="blog-right-sidebar.html"><img src="{{$article->getFirstAttachment('custom', 97, 87)}}" alt="{{$article->name}}" class="sidebar-blog-image" /></a>
-								<div class="sidebar-blog-title"><a href="{{$article->getLink()}}">{{$article->name}}</a></div>
-								<div class="sidebar-blog-date"><i class="fa fa-calendar-o"></i>28/09/15</div>
-								<div class="clearfix"></div>					
-							</article>
-						@endforeach
-						</div>
-					</div>
+					@include('frontend.partials.projectArticleSidebar')        
 				</div>
 			</div>
 		</div>
