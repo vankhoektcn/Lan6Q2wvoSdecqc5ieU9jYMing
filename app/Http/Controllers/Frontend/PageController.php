@@ -1192,7 +1192,21 @@ class PageController extends Controller
 	public function projectTypes($key)
 	{
 	}
-	public function projectCategories($key)
+	public function projectCategories()
+	{
+		$this->setMetadata();
+		$projectCategory = ProjectCategory::where('published', 1)->orderBy('priority')->get();
+		$sangNhuong = ProjectCategory::findByKey('can-ho-sang-nhuong')->first();
+		$sangNhuongProject = $sangNhuong->projects()->where('published', 1)->orderBy('published_at','desc')->take(5)->get();
+		$choThue = ProjectCategory::findByKey('can-ho-cho-thue')->first();
+		$choThueProject = $choThue->projects()->where('published', 1)->orderBy('published_at','desc')->take(5)->get();
+		$breadcrumb = '<li><a href="/danh-muc-du-an.html">Dự án</a></li>';
+
+		$tinDuAnMoiNhat = ArticleType::findByKey('moi-nhat')->first()->articles()->where('project_id', '>', 0)->orderBy('published_at', 'desc')->take(4)->get();
+		$tinDuAnXemNhieu = ArticleType::findByKey('xem-nhieu')->first()->articles()->where('project_id', '>', 0)->orderBy('published_at', 'desc')->take(4)->get();
+		return view('frontend.pages.projectCategories', compact('projectCategory', 'sangNhuong', 'sangNhuongProject', 'choThue', 'choThueProject', 'breadcrumb', 'tinDuAnMoiNhat', 'tinDuAnXemNhieu'));
+	}
+	public function projectCategory($key)
 	{
 		$category = ProjectCategory::where('key', $key)->first();
 		
@@ -1230,9 +1244,12 @@ class PageController extends Controller
 		OpenGraph::addProperty('image:width', 1200);
 		OpenGraph::addProperty('image:height', 628);
 
-		$projects = $category->projects()->where('published', 1)->orderBy('id','desc')->paginate($limit);
-		$breadcrumb = '<li><a href="/danh-muc-du-an">Dự án</a></li> <li class="active">'.$category->name.'</li>';
-		return view('frontend.pages.projectCategories', compact('projects', 'category', 'breadcrumb'));
+		$projects = $category->projects()->where('published', 1)->orderBy('published_at','desc')->paginate($limit);
+		$breadcrumb = '<li><a href="/danh-muc-du-an.html">Dự án</a></li> <li class="active">'.$category->name.'</li>';
+
+		$tinDuAnMoiNhat = ArticleType::findByKey('moi-nhat')->first()->articles()->where('project_id', '>', 0)->orderBy('published_at', 'desc')->take(4)->get();
+		$tinDuAnXemNhieu = ArticleType::findByKey('xem-nhieu')->first()->articles()->where('project_id', '>', 0)->orderBy('published_at', 'desc')->take(4)->get();
+		return view('frontend.pages.projectCategory', compact('projects', 'category', 'breadcrumb', 'tinDuAnMoiNhat', 'tinDuAnXemNhieu'));
 	}
 
 	/** END PROJECT GROUP */

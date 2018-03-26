@@ -86,8 +86,9 @@
 							</ul>
 						</li>
 						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dự án</a>
+							<a href="{{route('projectCategories')}}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dự án</a>
 							<ul class="dropdown-menu">
+								<li class=""> <a tabindex="-1" href="{{route('projectCategories')}}">Tất cả dự án</a> </li>
 								@foreach($projectCategory->where('published', 1)->orderBy('priority')->get() as $category)
 								<li class="">
 									<a tabindex="-1" href="{{$category->getLink()}}">{{$category->name}}</a>

@@ -33,6 +33,6 @@ class ProjectCategory extends BaseModel
 
 	public function getLink()
 	{
-		return route('projectCategories', ['key' => $this->key]);
+		return route('projectCategory', ['key' => $this->key]);
 	}
 }

@@ -155,10 +155,10 @@ Route::group(['namespace' => 'Frontend'], function()
 	Route::get('loai-du-an/{key}.html', 'PageController@projectTypes')->name('projectTypes');
 
 	// ALL projects category
-	Route::get('danh-muc-du-an.html', 'PageController@projectCategories')->name('projects');
+	Route::get('danh-muc-du-an.html', 'PageController@projectCategories')->name('projectCategories');
 
 	// projects category
-	Route::get('danh-muc-du-an/{key}.html', 'PageController@projectCategories')->name('projectCategories');
+	Route::get('danh-muc-du-an/{key}.html', 'PageController@projectCategory')->name('projectCategory');
 
 	// project detail
 	Route::get('du-an/{categorykey}/{key}.html', 'PageController@project')->name('project');
