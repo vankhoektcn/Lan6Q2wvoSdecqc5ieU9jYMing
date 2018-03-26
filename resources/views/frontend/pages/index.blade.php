@@ -129,46 +129,7 @@
 		<div class="featured-offers-container">
 			<div class="owl-carousel" id="featured-offers-owl">
 			@foreach($duAnNoiBat as $key=>$project)
-				<div class="featured-offer-col">
-					<div class="featured-offer-front">
-						<div class="featured-offer-photo">
-							<img src="{{ $project->getFirstAttachment("custom", 360, 270) }}" alt="" />
-							<div class="type-container">
-								<!-- <div class="estate-type">{{$project->name}}</div> -->
-								<div class="transaction-type">{{$project->name}}</div>
-							</div>
-						</div>
-						<div class="featured-offer-text">
-							<h4 class="featured-offer-title" style="color: #ee7e23"><i class="fa fa-map-marker mrgr05" aria-hidden="true"></i>{{$project->addressFull()}}</h4>
-							<p>{{$project->summary}}</p>
-						</div>
-						<!-- <div class="featured-offer-params">
-							<div class="featured-area">
-								<img src="/frontend/images/area-icon.png" alt="" />54m<sup>2</sup>
-							</div>
-							<div class="featured-rooms">
-								<img src="/frontend/images/rooms-icon.png" alt="" />3
-							</div>
-							<div class="featured-baths">
-								<img src="/frontend/images/bathrooms-icon.png" alt="" />1
-							</div>							
-						</div> -->
-						<div class="featured-price">
-							{{$project->price_description}}
-						</div>
-					</div>
-					<div class="featured-offer-back">
-						<div id="featured-map1" class="featured-offer-map"></div>
-						<div class="button">	
-							<a href="{{$project->getLink()}}" class="button-primary">
-								<span>Xem thêm</span>
-								<div class="button-triangle"></div>
-								<div class="button-triangle2"></div>
-								<div class="button-icon"><i class="fa fa-search"></i></div>
-							</a>
-						</div>
-					</div>
-				</div>
+				@include('frontend.partials.gridProjects')
 			@endforeach
 
 			</div>
@@ -191,95 +152,14 @@
 						<div class="row list-offer-row">
 							<div class="col-xs-12">
 							@foreach($duAnMoiNhat as $key=>$project)
-								<div class="list-offer">
-									<div class="list-offer-left">
-										<div class="list-offer-front">
-									
-											<div class="list-offer-photo">
-												<img src="{{ $project->getFirstAttachment("custom", 270, 180) }}" alt="" />
-												<div class="type-container">
-													<!-- <div class="estate-type">apartment</div> -->
-													<div class="transaction-type">{{$project->projectType->name}}</div>
-												</div>
-											</div>
-											<div class="list-offer-params">
-												<div class="list-area">
-													<img src="/frontend/images/area-icon.png" alt="" />...<sup>.</sup>
-												</div>
-												<div class="list-rooms">
-													<img src="/frontend/images/rooms-icon.png" alt="" />...
-												</div>
-												<div class="list-baths">
-													<img src="/frontend/images/bathrooms-icon.png" alt="" />...
-												</div>							
-											</div>	
-										</div>
-										<div class="list-offer-back">
-											<div id="list-map1" class="list-offer-map"></div>
-										</div>
-									</div>
-									<a class="list-offer-right" href="{{$project->getLink()}}">
-										<div class="list-offer-text">
-											<div class="list-offer-h4"><h4 class="">{{$project->name}}</h4></div>
-											<div class="clearfix"></div>
-											<div class="list-offer-h4">
-											<h4 class="list-offer-title"><smail><i class="fa fa-map-marker list-offer-localization hidden-xs"></i> {{$project->addressFull()}}</smail></h4></div>
-											<div class="clearfix"></div>
-											{{$project->summary}}
-											<div class="clearfix"></div>
-										</div>
-										<div class="price-list-cont">
-											<div class="list-price">
-												Chi tiết
-											</div>	
-										</div>
-									</a>
-									<div class="clearfix"></div>
-								</div>
-
-								<div class="clearfix"></div>
+								@include('frontend.partials.listProjects')
 							@endforeach
 							</div>
 						</div>
 						
 				</div>
 				<div class="col-xs-12 col-md-3">
-					<div class="sidebar">
-						<div class="sidebar-title-cont mrgt2x">
-							<h4 class="sidebar-title">Tin dự án mới<span class="special-color">.</span></h4>
-							<div class="title-separator-primary"></div>
-						</div>
-						<div class="sidebar-featured-cont">
-						@foreach($tinDuAnMoiNhat as $key=>$article)
-							<div class="sidebar-featured">
-								<a class="sidebar-featured-image" href="{{$article->getLink()}}">
-									<img src="{{$article->getFirstAttachment('custom', 97, 87)}}" alt="{{$article->name}}" />
-									<!-- <div class="sidebar-featured-type">
-										<div class="sidebar-featured-estate">A</div>
-										<div class="sidebar-featured-transaction">S</div>
-									</div> -->
-								</a>
-								<div class="sidebar-featured-title"><a href="{{$article->getLink()}}">{{$article->name}}</a></div>
-								<div class="sidebar-featured-price">{{$article->project->name}}</div>
-								<div class="clearfix"></div>					
-							</div>
-						@endforeach
-						</div>
-						<div class="sidebar-title-cont">
-							<h4 class="sidebar-title">Xem nhiều<span class="special-color">.</span></h4>
-							<div class="title-separator-primary"></div>
-						</div>
-						<div class="sidebar-blog-cont">
-						@foreach($tinDuAnXemNhieu as $key=>$article)
-							<article>
-								<a href="blog-right-sidebar.html"><img src="{{$article->getFirstAttachment('custom', 97, 87)}}" alt="{{$article->name}}" class="sidebar-blog-image" /></a>
-								<div class="sidebar-blog-title"><a href="{{$article->getLink()}}">{{$article->name}}</a></div>
-								<div class="sidebar-blog-date"><i class="fa fa-calendar-o"></i>28/09/15</div>
-								<div class="clearfix"></div>					
-							</article>
-						@endforeach
-						</div>
-					</div>
+					@include('frontend.partials.projectArticleSidebar')        
 				</div>
 			</div>
 		</div>

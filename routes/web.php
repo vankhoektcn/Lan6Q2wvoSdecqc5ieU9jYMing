@@ -151,8 +151,14 @@ Route::group(['namespace' => 'Frontend'], function()
 	// products producer
 	Route::get('nha-san-xuat/{key}.html', 'PageController@producer')->name('producer');
 
+	// projects type
+	Route::get('loai-du-an/{key}.html', 'PageController@projectTypes')->name('projectTypes');
+
+	// ALL projects category
+	Route::get('danh-muc-du-an.html', 'PageController@projectCategories')->name('projectCategories');
+
 	// projects category
-	Route::get('du-an/{key}.html', 'PageController@projects')->name('projects');
+	Route::get('danh-muc-du-an/{key}.html', 'PageController@projectCategory')->name('projectCategory');
 
 	// project detail
 	Route::get('du-an/{categorykey}/{key}.html', 'PageController@project')->name('project');
