@@ -101,5 +101,5 @@
 @endsection
 
 @section('customize.js')
-	<script type="text/javascript" src="/frontend/js/projectCategories.js"></script>
+	<script type="text/javascript" src="/frontend/js/pages/projectCategories.js"></script>
 @endsection

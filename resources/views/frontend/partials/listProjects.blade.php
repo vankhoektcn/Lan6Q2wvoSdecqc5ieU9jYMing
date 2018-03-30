@@ -22,7 +22,7 @@
 											</div>	
 										</div>
 										<div class="list-offer-back">
-											<div id="list-map1" class="list-offer-map"></div>
+											<div id="list-map-{{$key}}" class="list-offer-map"  data-latitude="{{$project->map_latitude}}" data-longitude="{{$project->map_longitude}}" data-projectid="{{$project->id}}"></div>
 										</div>
 									</div>
 									<a class="list-offer-right" href="{{$project->getLink()}}">

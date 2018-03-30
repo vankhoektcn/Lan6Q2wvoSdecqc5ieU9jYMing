@@ -218,3 +218,7 @@
 		
 
 @endsection
+
+@section('customize.js')
+	<script type="text/javascript" src="/frontend/js/pages/index.js"></script>
+@endsection

@@ -27,7 +27,7 @@
 						</div>
 					</div>
 					<div class="featured-offer-back">
-						<div id="featured-map1" class="featured-offer-map"></div>
+						<div id="featured-map-{{$key}}" class="featured-offer-map" data-latitude="{{$project->map_latitude}}" data-longitude="{{$project->map_longitude}}" data-projectid="{{$project->id}}"></div>
 						<div class="button">	
 							<a href="{{$project->getLink()}}" class="button-primary">
 								<span>Xem thêm</span>
