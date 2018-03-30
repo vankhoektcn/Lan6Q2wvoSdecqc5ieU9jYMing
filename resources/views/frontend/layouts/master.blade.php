@@ -176,7 +176,7 @@ src="https://www.facebook.com/tr?id=190771654806895&ev=PageView&noscript=1"
     <script type="text/javascript" src="/frontend/bootstrap/bootstrap.min.js"></script>
 
 <!-- Google Maps -->
-	<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDfDCV5hXiPamCIT8_vwGXuzimLQ9MF76g&amp;sensor=false&amp;libraries=places"></script>
+	<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyB-7hGMnbSJkHeHc71Z6yisNApPsxjZrLI&amp;libraries=places"></script>
 	
 <!-- plugins script -->
 	<script type="text/javascript" src="/frontend/js/plugins.js"></script>
@@ -187,26 +187,26 @@ src="https://www.facebook.com/tr?id=190771654806895&ev=PageView&noscript=1"
 
 <!-- google maps initialization -->
 	<script type="text/javascript">
-            google.maps.event.addDomListener(window, 'load', init);
-			function init() {
+   //          google.maps.event.addDomListener(window, 'load', init);
+			// function init() {
 				
-				mapInitAddress("narodowa 18 Pruszków","featured-map1","images/pin-house.png", false);
+			// 	mapInitAddress("narodowa 18 Pruszków","featured-map1","images/pin-house.png", false);
 				
-				//mapInit(40.6128,-73.7903,"featured-map1","images/pin-house.png", false);
-				mapInit(40.7222,-73.7903,"featured-map2","images/pin-apartment.png", false);
-				mapInit(41.0306,-73.7669,"featured-map3","images/pin-land.png", false);
-				mapInit(41.3006,-72.9440,"featured-map4","images/pin-commercial.png", false);
-				mapInit(42.2418,-74.3626,"featured-map5","images/pin-house.png", false);
-				mapInit(38.8974,-77.0365,"featured-map6","images/pin-apartment.png", false);
-				mapInit(38.7860,-77.0129,"featured-map7","images/pin-house.png", false);
+			// 	//mapInit(40.6128,-73.7903,"featured-map1","images/pin-house.png", false);
+			// 	mapInit(40.7222,-73.7903,"featured-map2","images/pin-apartment.png", false);
+			// 	mapInit(41.0306,-73.7669,"featured-map3","images/pin-land.png", false);
+			// 	mapInit(41.3006,-72.9440,"featured-map4","images/pin-commercial.png", false);
+			// 	mapInit(42.2418,-74.3626,"featured-map5","images/pin-house.png", false);
+			// 	mapInit(38.8974,-77.0365,"featured-map6","images/pin-apartment.png", false);
+			// 	mapInit(38.7860,-77.0129,"featured-map7","images/pin-house.png", false);
 				
-				mapInit(41.2693,-70.0874,"grid-map1","images/pin-house.png", false);
-				mapInit(33.7544,-84.3857,"grid-map2","images/pin-apartment.png", false);
-				mapInit(33.7337,-84.4443,"grid-map3","images/pin-land.png", false);
-				mapInit(33.8588,-84.4858,"grid-map4","images/pin-commercial.png", false);
-				mapInit(34.0254,-84.3560,"grid-map5","images/pin-apartment.png", false);
-				mapInit(40.6128,-73.9976,"grid-map6","images/pin-house.png", false);
-			}
+			// 	mapInit(41.2693,-70.0874,"grid-map1","images/pin-house.png", false);
+			// 	mapInit(33.7544,-84.3857,"grid-map2","images/pin-apartment.png", false);
+			// 	mapInit(33.7337,-84.4443,"grid-map3","images/pin-land.png", false);
+			// 	mapInit(33.8588,-84.4858,"grid-map4","images/pin-commercial.png", false);
+			// 	mapInit(34.0254,-84.3560,"grid-map5","images/pin-apartment.png", false);
+			// 	mapInit(40.6128,-73.9976,"grid-map6","images/pin-house.png", false);
+			// }
 	
 	</script>
 

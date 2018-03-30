@@ -1257,9 +1257,9 @@ function mapInit(lat,lng,id, pinicon, ui, offset) {
 	var mapOptions = {
 		zoom: 15,
 		disableDefaultUI: ui,
-        draggable: false,
-        zoomControl: false,
-        scrollwheel: false,
+        draggable: true,
+        zoomControl: true,
+        scrollwheel: true,
         disableDoubleClickZoom: true,
 		mapTypeControlOptions: {
 		position: google.maps.ControlPosition.LEFT_TOP
