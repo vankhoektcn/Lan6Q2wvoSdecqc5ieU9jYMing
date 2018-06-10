@@ -66,7 +66,7 @@ src="https://www.facebook.com/tr?id=190771654806895&ev=PageView&noscript=1"
 	@include('frontend.partials.footer')
 </div>	
 
-<!-- Move to top button -->
+<!-- Move to top button [Move to top button] -->
 
 <div class="move-top">
 	<div class="big-triangle-second-color"></div>
